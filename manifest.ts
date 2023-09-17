@@ -8,7 +8,7 @@ const manifest: chrome.runtime.ManifestV3 = {
   name: packageJson.name,
   version: packageJson.version,
   description: packageJson.description,
-  permissions: ["storage"],
+  permissions: ["storage", "nativeMessaging"],
   options_page: "src/pages/options/index.html",
   background: {
     service_worker: "src/pages/background/index.js",
@@ -36,6 +36,7 @@ const manifest: chrome.runtime.ManifestV3 = {
   web_accessible_resources: [
     {
       resources: [
+        "src/pages/inpage/index.js",
         "assets/js/*.js",
         "assets/css/*.css",
         "icon-128.png",

@@ -1,9 +1,9 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import Newtab from "@pages/newtab/Newtab";
 import "@pages/newtab/index.css";
+import Newtab from "@pages/newtab/Newtab";
 import refreshOnUpdate from "virtual:reload-on-update-in-view";
-import { attachTwindStyle } from "@src/shared/style/twind";
+import { ChakraProvider } from '@chakra-ui/react'
 
 refreshOnUpdate("pages/newtab");
 
@@ -12,10 +12,13 @@ function init() {
   if (!appContainer) {
     throw new Error("Can not find #app-container");
   }
-  attachTwindStyle(appContainer, document);
   const root = createRoot(appContainer);
 
-  root.render(<Newtab />);
+  root.render(
+    <ChakraProvider>
+      <Newtab />
+    </ChakraProvider>
+  );
 }
 
 init();
