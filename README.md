@@ -1,98 +1,51 @@
-<div align="center">
-<img src="public/icon-128.png" alt="logo"/>
-<h1> Chrome Extension Boilerplate with<br/>React + Vite + TypeScript</h1>
+# Lambda Wallet
 
-![](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black)
-![](https://img.shields.io/badge/Typescript-3178C6?style=flat-square&logo=typescript&logoColor=white)
-![](https://badges.aleen42.com/src/vitejs.svg)
-![GitHub action badge](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/actions/workflows/build-zip.yml/badge.svg)
-<img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://github.com/Jonghakseo/chrome-extension-boilerplate-react-viteFactions&count_bg=%23#222222&title_bg=%23#454545&title=😀&edge_flat=true" alt="hits"/>
+Lambda Wallet is a demo wallet chrome extension on manfest v3 that injects a metamask-like provider. It has conflict resolution for multiple providers and supports basic RPC commands. The extension is written in Node.js and React.
 
+## Prerequisites
 
-> This project is listed in the [Awesome Vite](https://github.com/vitejs/awesome-vite)
+Before proceeding with the installation, ensure you have the following software installed on your machine:
 
-</div>
+- Node.js: [https://nodejs.org](https://nodejs.org)
+- Yarn: [https://yarnpkg.com](https://yarnpkg.com)
+- Google Chrome Browser: [https://www.google.com/chrome](https://www.google.com/chrome)
 
-## Table of Contents
+## Installation Steps
 
-- [Intro](#intro)
-- [Features](#features)
-- [Installation](#installation)
-  - [Procedures](#procedures)
-- [Screenshots](#screenshots)
-  - [NewTab](#newtab)
-  - [Popup](#popup)  
-- [Examples](#examples)
-- [Documents](#documents)
+1. Clone the repository:
+   ```
+   git clone https://github.com/samsheff/Wallet-Demo
+   ```
 
-## Intro <a name="intro"></a>
-This boilerplate is made for creating chrome extensions using React and Typescript.
-> The focus was on improving the build speed and development experience with Vite.
+2. Navigate to the project directory:
+   ```
+   cd Wallet-Demo
+   ```
 
-## Features <a name="features"></a>
-- [React 18](https://reactjs.org/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Jest](https://jestjs.io/)
-- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
-- [Vite](https://vitejs.dev/)
-- [SASS](https://sass-lang.com/)
-- [Twind](https://twind.dev/)
-- [ESLint](https://eslint.org/)
-- [Prettier](https://prettier.io/)
-- [Chrome Extension Manifest Version 3](https://developer.chrome.com/docs/extensions/mv3/intro/)
-- HRR(Hot Rebuild & Refresh/Reload)
+3. Install project dependencies using Yarn:
+   ```
+   yarn install
+   ```
 
-## Installation <a name="installation"></a>
+4. Build the Chrome extension:
+   ```
+   yarn run dev
+   ```
 
-### Procedures <a name="procedures"></a>
-1. Clone this repository.
-2. Change `name` and `description` in package.json => **Auto synchronize with manifest** 
-3. Run `yarn install` or `npm i` (check your node version >= 16.6, recommended >= 18)
-4. Run `yarn dev` or `npm run dev`
-5. Load Extension on Chrome
-   1. Open - Chrome browser
-   2. Access - chrome://extensions
-   3. Check - Developer mode
-   4. Find - Load unpacked extension
-   5. Select - `dist` folder in this project (after dev or build)
-6. If you want to build in production, Just run `yarn build` or `npm run build`.
+## Installing the Extension
 
-## Screenshots <a name="screenshots"></a>
+1. Open Google Chrome and navigate to `chrome://extensions` in the address bar.
 
-### New Tab <a name="newtab"></a>
+2. Enable **Developer Mode** by toggling the switch in the top-right corner of the page.
 
-<img width="971" src="https://user-images.githubusercontent.com/53500778/162631646-cd40976b-b737-43d0-8e6a-6ac090a2e2d4.png">
+3. Click on the **Load unpacked** button and browse to the `dist` folder in the project directory.
 
-### Popup <a name="popup"></a>
+4. Select the `dist` folder and click **Open**. The Chrome extension will be installed.
 
-<img width="314" alt="popup" src="https://user-images.githubusercontent.com/53500778/203561728-23517d46-12e3-4139-8a4f-e0b2f22a6ab3.png">
+## Resetting the Wallet Settings and Seed Phrase
 
-## Examples <a name="examples"></a>
-- https://github.com/Jonghakseo/drag-gpt-extension
-- https://github.com/Jonghakseo/pr-commit-noti
-- https://github.com/ariburaco/chatgpt-file-uploader-extended
+1. Open Google Chrome and navigate to `chrome://extensions` in the address bar.
 
-## Documents <a name="documents"></a>
-- [Vite Plugin](https://vitejs.dev/guide/api-plugin.html)
-- [ChromeExtension](https://developer.chrome.com/docs/extensions/mv3/)
-- [Rollup](https://rollupjs.org/guide/en/)
-- [Rollup-plugin-chrome-extension](https://www.extend-chrome.dev/rollup-plugin)
+2. Click on the Extension in the list and then on **Extension Options**
 
-
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=Jonghakseo/chrome-extension-boilerplate-react-vite&type=Date)](https://star-history.com/#Jonghakseo/chrome-extension-boilerplate-react-vite&Date)
-
-
-
----
-## Thanks To
-
-| [Jetbrains](https://jb.gg/OpenSourceSupport)                                                                           | [Jackson Hong](https://www.linkedin.com/in/j-acks0n/)                                            |
-|--------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|
-| <img width="100" src="https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.png" alt="JetBrains Logo (Main) logo."> | <img width="100" src='https://avatars.githubusercontent.com/u/23139754?v=4' alt='Jackson Hong'/> |
-
-
----
-
-[Jonghakseo](https://nookpi.tistory.com/)
+4. Click on the **Reset Wallet Data** button to reset the wallet associated with the extension.
