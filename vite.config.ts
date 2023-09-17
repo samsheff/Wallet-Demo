@@ -6,6 +6,7 @@ import customDynamicImport from "./utils/plugins/custom-dynamic-import";
 import addHmr from "./utils/plugins/add-hmr";
 import watchRebuild from "./utils/plugins/watch-rebuild";
 import manifest from "./manifest";
+import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill'
 
 const rootDir = resolve(__dirname);
 const srcDir = resolve(rootDir, "src");
@@ -38,6 +39,9 @@ export default defineConfig({
     customDynamicImport(),
     addHmr({ background: enableHmrInBackgroundScript, view: true }),
     watchRebuild(),
+    NodeGlobalsPolyfillPlugin({
+      buffer: true
+    })
   ],
   publicDir,
   build: {

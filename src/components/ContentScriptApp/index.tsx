@@ -1,5 +1,5 @@
 import { createRoot } from "react-dom/client";
-import ContentApp from "@src/pages/content/components/ContentApp/app";
+import ContentApp from "@root/src/components/ContentScriptApp/app";
 import refreshOnUpdate from "virtual:reload-on-update-in-view";
 import { ChakraProvider } from "@chakra-ui/react";
 

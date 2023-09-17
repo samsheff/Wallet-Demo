@@ -24,7 +24,7 @@ const WalletOnboardingImportSeed = () => {
     <div>
       <Input size='lg' placeholder='Seed Phrase'
         value={mnemonic}
-        onChange={handleMnemonicChange} />
+        onChange={handleMnemonicChange} marginBottom={"30px"}/>
       <Button colorScheme='blue' variant='solid' size='lg' onClick={initWallet}>Import Seed Phrase</Button>
     </div>
   )

@@ -1,13 +1,14 @@
 import { Button, ButtonGroup, Stack, Badge } from "@chakra-ui/react";
 import { useEffect, useState } from 'react'
 import { Wallet, randomBytes } from "ethers";
-import { entropyToMnemonic } from "bip39";
+import { entropyToMnemonic, generateMnemonic } from "bip39";
 import { goTo } from 'react-chrome-extension-router';
 import WalletDataStorage from "@root/src/shared/storages/walletDataStorage";
 import WalletHome from "../../Wallet/Home";
-import { Buffer as BufferPolyfill } from 'buffer'
 import WalletSettingsStorage from "@root/src/shared/storages/walletSettingsStorage";
-declare var Buffer: typeof BufferPolyfill;
+
+import { Buffer } from "buffer";
+window.Buffer = Buffer;
 
 const WalletOnboardingCreateNew = () => {
 
@@ -20,19 +21,23 @@ const WalletOnboardingCreateNew = () => {
   })
 
   const initWallet = () => {
-    const generatedSeedPhrase = entropyToMnemonic(Buffer.from(randomBytes(16).buffer))
+    const generatedSeedPhrase = generateMnemonic()
     setMnemonic(generatedSeedPhrase)
-    console.log(generatedSeedPhrase)
+    
     const wallet = Wallet.fromPhrase(generatedSeedPhrase)
     const address = wallet.address
-    WalletDataStorage.initialize(generatedSeedPhrase, address)
 
+    WalletDataStorage.initialize(generatedSeedPhrase, address)
     WalletSettingsStorage.setPrimaryWallet(false);
   }
 
   return (
     <div>
-      <Stack direction='row'>
+      { mnemonic.length > 0 ? 
+        <h4>
+          Your Wallet Seed Phrase
+        </h4> : ''}
+      <Stack direction='row' marginBottom={"20px"}>
         {mnemonic.split(' ').map(word =>
           <Badge colorScheme='blue'>{word}</Badge>
         )}

@@ -4,7 +4,7 @@ const inPage = document.createElement('script');
 inPage.src = chrome.runtime.getURL('/src/pages/inpage/index.js');
 document.documentElement.appendChild(inPage);
 
-import('./components/ContentApp')
+import('../../components/ContentScriptApp')
 
 
 
