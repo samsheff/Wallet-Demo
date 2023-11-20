@@ -1,12 +1,16 @@
 console.log("content loaded");
 
-const inPage = document.createElement('script');
-inPage.src = chrome.runtime.getURL('/src/pages/inpage/index.js');
+const inPage = document.createElement("script");
+inPage.src = chrome.runtime.getURL("/src/pages/inpage/index.js");
 document.documentElement.appendChild(inPage);
 
-import('../../components/ContentScriptApp')
+// if (import.meta.hot) {
+//   import.meta.hot.on("vite:afterUpdate", () => {
+//     startWorker();
+//   });
+// }
 
-
+import("../../components/ContentScriptApp");
 
 // window.addEventListener(
 //   "message",
@@ -40,7 +44,7 @@ import('../../components/ContentScriptApp')
 //   },
 //   false,
 // );
-  
+
 // function sendRpcRequest(request) {
 //   chrome.storage.sync.get("walletdata", function (walletdata) {
 //     if (walletdata.walletdata.initialized === true) {

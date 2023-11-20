@@ -6,7 +6,8 @@ import customDynamicImport from "./utils/plugins/custom-dynamic-import";
 import addHmr from "./utils/plugins/add-hmr";
 import watchRebuild from "./utils/plugins/watch-rebuild";
 import manifest from "./manifest";
-import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill'
+import { NodeGlobalsPolyfillPlugin } from "@esbuild-plugins/node-globals-polyfill";
+import hotReloadExtension from "hot-reload-extension-vite";
 
 const rootDir = resolve(__dirname);
 const srcDir = resolve(rootDir, "src");
@@ -40,8 +41,12 @@ export default defineConfig({
     addHmr({ background: enableHmrInBackgroundScript, view: true }),
     watchRebuild(),
     NodeGlobalsPolyfillPlugin({
-      buffer: true
-    })
+      buffer: true,
+    }),
+    hotReloadExtension({
+      log: true,
+      backgroundPath: "dist/src/pages/background/index.js", // relative path to background script file
+    }),
   ],
   publicDir,
   build: {
@@ -61,6 +66,7 @@ export default defineConfig({
         popup: resolve(pagesDir, "popup", "index.html"),
         newtab: resolve(pagesDir, "newtab", "index.html"),
         options: resolve(pagesDir, "options", "index.html"),
+        worker: resolve(pagesDir, "workers", "index.ts"),
       },
       output: {
         entryFileNames: "src/pages/[name]/index.js",
