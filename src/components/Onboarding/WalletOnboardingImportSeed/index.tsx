@@ -6,20 +6,19 @@ import { goTo } from "react-chrome-extension-router";
 import WalletHome from "../../Wallet/Home";
 import WalletSettingsStorage from "@root/src/shared/storages/walletSettingsStorage";
 import { Action } from "@root/src/pages/workers";
-import useWorker from "@root/src/shared/hooks/useWorker";
+import { useWorker } from "@root/src/shared/hooks/useWorker";
 
 const WalletOnboardingImportSeed = () => {
   const [mnemonic, setMnemonic] = useState("");
   const handleMnemonicChange = (event) => setMnemonic(event.target.value);
 
-  const initWallet = () => {
-    useWorker(Action.GetAddress, mnemonic, (address: string) => {
-      WalletDataStorage.initialize(mnemonic, address);
-      WalletSettingsStorage.setPrimaryWallet(false);
-      console.log("Response: " + address);
+  const initWallet = async () => {
+    const address = await useWorker(Action.GetAddress, mnemonic);
+    WalletDataStorage.initialize(mnemonic, address);
+    WalletSettingsStorage.setPrimaryWallet(false);
+    console.log("Response: " + address);
 
-      goTo(WalletHome);
-    });
+    goTo(WalletHome);
   };
 
   return (

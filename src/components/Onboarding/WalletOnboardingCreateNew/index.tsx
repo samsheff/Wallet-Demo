@@ -8,7 +8,7 @@ import WalletSettingsStorage from "@root/src/shared/storages/walletSettingsStora
 
 import { Buffer } from "buffer";
 import { Action } from "@root/src/pages/workers";
-import useWorker from "@root/src/shared/hooks/useWorker";
+import { useWorker } from "@root/src/shared/hooks/useWorker";
 window.Buffer = Buffer;
 
 const WalletOnboardingCreateNew = () => {
@@ -20,15 +20,13 @@ const WalletOnboardingCreateNew = () => {
     }
   });
 
-  const initWallet = () => {
+  const initWallet = async () => {
     const generatedSeedPhrase = generateMnemonic();
     setMnemonic(generatedSeedPhrase);
-
-    useWorker(Action.GetAddress, generatedSeedPhrase, (address: string) => {
-      WalletDataStorage.initialize(mnemonic, address);
-      WalletSettingsStorage.setPrimaryWallet(false);
-      console.log("Response: " + address);
-    });
+    const address = await useWorker(Action.GetAddress, mnemonic);
+    WalletDataStorage.initialize(mnemonic, address);
+    WalletSettingsStorage.setPrimaryWallet(false);
+    console.log("Response: " + address);
   };
 
   return (
